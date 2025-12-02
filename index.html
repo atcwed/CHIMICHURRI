@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHIMICHURRI EL CORDOBÈS</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            width: 100%;
+            min-height: 100%;
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d5a3d 25%, #3d7a4f 50%, #4a9960 75%, #5cb85c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Elementos decorativos animados */
+        .floating-herbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .herb {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .herb:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+            font-size: 3rem;
+        }
+
+        .herb:nth-child(2) {
+            right: 15%;
+            top: 40%;
+            animation-delay: 3s;
+            font-size: 2.5rem;
+        }
+
+        .herb:nth-child(3) {
+            left: 20%;
+            bottom: 30%;
+            animation-delay: 6s;
+            font-size: 2rem;
+        }
+
+        .herb:nth-child(4) {
+            right: 25%;
+            bottom: 20%;
+            animation-delay: 9s;
+            font-size: 3.5rem;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-60px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-30px) rotate(3deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-title {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #e8f5e9;
+            margin-top: 20px;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .feature-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.8rem;
+            color: #1a4d2e;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+
+        .feature-description {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .description-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .description-text {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.8;
+            text-align: center;
+            margin: 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #25D366;
+            color: white;
+            padding: 25px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-button:hover {
+            background: #20BA5A;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .whatsapp-icon {
+            font-size: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo-title {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 30px 20px;
+            }
+
+            .description-section {
+                padding: 30px 20px;
+            }
+
+            .description-text {
+                font-size: 1.1rem;
+            }
+
+            .whatsapp-button {
+                padding: 20px 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="wrapper">
+   <div class="floating-herbs">
+    <div class="herb">
+     🌿
+    </div>
+    <div class="herb">
+     🌱
+    </div>
+    <div class="herb">
+     🌿
+    </div>
+    <div class="herb">
+     🌱
+    </div>
+   </div>
+   <div class="container">
+    <header class="header">
+     <h1 class="logo-title" id="mainTitle">CHIMICHURRI EL CORDOBÈS</h1>
+     <p class="tagline" id="tagline">Sabor Auténtico, Hecho con Pasión</p>
+    </header>
+    <div class="features-grid">
+     <div class="feature-card"><span class="feature-icon">👨‍🍳</span>
+      <h2 class="feature-title" id="feature1">100% Artesanal</h2>
+      <p class="feature-description">Cada frasco es preparado con dedicación y cuidado, siguiendo recetas tradicionales que garantizan el mejor sabor.</p>
+     </div>
+     <div class="feature-card"><span class="feature-icon">✋</span>
+      <h2 class="feature-title" id="feature2">Hecho a Mano</h2>
+      <p class="feature-description">Proceso completamente manual que preserva la textura perfecta y el equilibrio ideal de todos los ingredientes.</p>
+     </div>
+     <div class="feature-card"><span class="feature-icon">🌿</span>
+      <h2 class="feature-title" id="feature3">Sin Conservantes</h2>
+      <p class="feature-description">Solo ingredientes naturales y frescos. Nada artificial, solo el sabor puro y auténtico que tu mesa merece.</p>
+     </div>
+    </div>
+    <div class="description-section">
+     <p class="description-text" id="description">Descubre el chimichurri que elevará tus asados y comidas al siguiente nivel. Preparado con hierbas frescas, ajo seleccionado y aceite de primera calidad, nuestro chimichurri captura la esencia de la tradición cordobesa en cada gota. Perfecto para carnes, vegetales y todo lo que tu creatividad imagine.</p>
+    </div>
+    <div class="cta-section"><a href="https://wa.me/573012264952" target="_blank" rel="noopener noreferrer" class="whatsapp-button"> <span class="whatsapp-icon">📱</span> <span id="ctaText">¡Pide el Tuyo Ahora!</span> </a>
+    </div>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            main_title: "CHIMICHURRI EL CORDOBÈS",
+            tagline: "Sabor Auténtico, Hecho con Pasión",
+            feature_1: "100% Artesanal",
+            feature_2: "Hecho a Mano",
+            feature_3: "Sin Conservantes",
+            cta_text: "¡Pide el Tuyo Ahora!",
+            description: "Descubre el chimichurri que elevará tus asados y comidas al siguiente nivel. Preparado con hierbas frescas, ajo seleccionado y aceite de primera calidad, nuestro chimichurri captura la esencia de la tradición cordobesa en cada gota. Perfecto para carnes,  y todo lo que tu creatividad imagine.",
+            background_gradient_start: "#1a4d2e",
+            background_gradient_end: "#5cb85c",
+            card_background: "#ffffff",
+            primary_text: "#1a4d2e",
+            secondary_text: "#333333",
+            button_color: "#25D366"
+        };
+
+        async function onConfigChange(config) {
+            const mainTitle = config.main_title || defaultConfig.main_title;
+            const tagline = config.tagline || defaultConfig.tagline;
+            const feature1 = config.feature_1 || defaultConfig.feature_1;
+            const feature2 = config.feature_2 || defaultConfig.feature_2;
+            const feature3 = config.feature_3 || defaultConfig.feature_3;
+            const ctaText = config.cta_text || defaultConfig.cta_text;
+            const description = config.description || defaultConfig.description;
+            const bgStart = config.background_gradient_start || defaultConfig.background_gradient_start;
+            const bgEnd = config.background_gradient_end || defaultConfig.background_gradient_end;
+            const cardBg = config.card_background || defaultConfig.card_background;
+            const primaryText = config.primary_text || defaultConfig.primary_text;
+            const secondaryText = config.secondary_text || defaultConfig.secondary_text;
+            const buttonColor = config.button_color || defaultConfig.button_color;
+
+            document.getElementById('mainTitle').textContent = mainTitle;
+            document.getElementById('tagline').textContent = tagline;
+            document.getElementById('feature1').textContent = feature1;
+            document.getElementById('feature2').textContent = feature2;
+            document.getElementById('feature3').textContent = feature3;
+            document.getElementById('ctaText').textContent = ctaText;
+            document.getElementById('description').textContent = description;
+
+            document.querySelector('.wrapper').style.background = 
+                linear-gradient(135deg, ${bgStart} 0%, ${bgEnd} 100%);
+
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                card.style.background = cardBg;
+            });
+
+            const featureTitles = document.querySelectorAll('.feature-title');
+            featureTitles.forEach(title => {
+                title.style.color = primaryText;
+            });
+
+            const featureDescriptions = document.querySelectorAll('.feature-description');
+            featureDescriptions.forEach(desc => {
+                desc.style.color = secondaryText;
+            });
+
+            document.querySelector('.description-section').style.background = cardBg;
+            document.querySelector('.description-text').style.color = secondaryText;
+
+            document.querySelector('.whatsapp-button').style.background = buttonColor;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_gradient_start || defaultConfig.background_gradient_start,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_gradient_start: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.background_gradient_end || defaultConfig.background_gradient_end,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_gradient_end: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.card_background || defaultConfig.card_background,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ card_background: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_text || defaultConfig.primary_text,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_text: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.button_color || defaultConfig.button_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ button_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["main_title", config.main_title || defaultConfig.main_title],
+                ["tagline", config.tagline || defaultConfig.tagline],
+                ["feature_1", config.feature_1 || defaultConfig.feature_1],
+                ["feature_2", config.feature_2 || defaultConfig.feature_2],
+                ["feature_3", config.feature_3 || defaultConfig.feature_3],
+                ["cta_text", config.cta_text || defaultConfig.cta_text],
+                ["description", config.description || defaultConfig.description]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a7cfb1a4377e70e',t:'MTc2NDcwMTEyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
